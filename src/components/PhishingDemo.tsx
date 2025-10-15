@@ -13,7 +13,7 @@ const PhishingDemo: React.FC = () => {
 
 We've detected suspicious activity on your account. For your security, please verify your account immediately by clicking the link below:
 
-VERIFY ACCOUNT NOW: https://amazom-security.com/verify
+VERIFY ACCOUNT NOW: http://amazom-security.com/verify
 
 If you don't verify within 24 hours, your account will be suspended.
 
@@ -112,7 +112,7 @@ Amazon Security Team`
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <div className="ml-4 bg-white px-3 py-1 rounded border text-sm text-gray-600 flex-1">
-                    <span className="text-red-600">🔓</span> https://amazom-security.com/verify
+                    <span className="text-red-600"></span> http://amazom-security.com/verify
                   </div>
                 </div>
               </div>
@@ -229,7 +229,7 @@ Amazon Security Team`
                 <div className="bg-gray-800 p-3 rounded border font-mono text-sm">
                   <div className="text-gray-400">// Attacker's server logs:</div>
                   <div className="text-cyan-400">Email: {enteredCredentials.email}</div>
-                  <div className="text-cyan-400">Password: {enteredCredentials.password ? '•'.repeat(enteredCredentials.password.length) : ''}</div>
+                  <div className="text-cyan-400">Password: {enteredCredentials.password}</div>
                   <div className="text-gray-400">Timestamp: {new Date().toISOString()}</div>
                   <div className="text-gray-400">IP: 192.168.1.100 (victim's IP)</div>
                 </div>
