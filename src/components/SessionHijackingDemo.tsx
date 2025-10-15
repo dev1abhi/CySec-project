@@ -135,7 +135,58 @@ const SessionHijackingDemo: React.FC = () => {
         </div>
       </div>
 
-      {/* Attack Methods */}
+     
+      {/* Live Session Data */}
+      {sessionState !== 'logged-out' && (
+        <div className="bg-gray-700 rounded-lg p-4">
+          <h4 className="font-semibold mb-3 flex items-center">
+            <Cookie className="w-4 h-4 text-orange-400 mr-2" />
+            Current Session Data
+          </h4>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-gray-800 p-3 rounded border">
+              <div className="text-xs text-gray-400 mb-2">Browser Cookies:</div>
+              <div className="font-mono text-xs space-y-1">
+                <div className={getSessionColor()}>sessionId={sessionId}</div>
+                <div className={getSessionColor()}>userId=user_12345</div>
+                <div className={getSessionColor()}>role=admin</div>
+                <div className={getSessionColor()}>lastActivity={Date.now()}</div>
+              </div>
+            </div>
+            
+            <div className="bg-gray-800 p-3 rounded border">
+              <div className="text-xs text-gray-400 mb-2">Session Metadata:</div>
+              <div className="font-mono text-xs space-y-1">
+                <div className={getSessionColor()}>IP: 192.168.1.100</div>
+                <div className={getSessionColor()}>Browser: Chrome 120</div>
+                <div className={getSessionColor()}>OS: {navigator.platform}</div>
+                <div className={getSessionColor()}>Status: {sessionState}</div>
+              </div>
+            </div>
+          </div>
+
+          {sessionState === 'hijacked' && (
+            <div className="mt-4 p-4 bg-red-900/30 border border-red-700/50 rounded-lg">
+              <div className="flex items-start space-x-3">
+                <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
+                <div>
+                  <div className="text-red-400 font-medium">Session Hijacked!</div>
+                  <div className="text-red-300 text-sm mt-1">
+                    An attacker now has access to this user session and can perform actions as the logged-in user.
+                  </div>
+                  <div className="text-red-300 text-xs mt-2">
+                    Possible actions: View private data, make transactions, change account settings, access admin panels
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+
+       {/* Attack Methods */}
       <div className="bg-gray-700 rounded-lg p-4">
         <h4 className="font-semibold mb-3">Attack Methods</h4>
         
@@ -212,54 +263,6 @@ wireshark -i wlan0 -k`}
         </div>
       </div>
 
-      {/* Live Session Data */}
-      {sessionState !== 'logged-out' && (
-        <div className="bg-gray-700 rounded-lg p-4">
-          <h4 className="font-semibold mb-3 flex items-center">
-            <Cookie className="w-4 h-4 text-orange-400 mr-2" />
-            Current Session Data
-          </h4>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-gray-800 p-3 rounded border">
-              <div className="text-xs text-gray-400 mb-2">Browser Cookies:</div>
-              <div className="font-mono text-xs space-y-1">
-                <div className={getSessionColor()}>sessionId={sessionId}</div>
-                <div className={getSessionColor()}>userId=user_12345</div>
-                <div className={getSessionColor()}>role=admin</div>
-                <div className={getSessionColor()}>lastActivity={Date.now()}</div>
-              </div>
-            </div>
-            
-            <div className="bg-gray-800 p-3 rounded border">
-              <div className="text-xs text-gray-400 mb-2">Session Metadata:</div>
-              <div className="font-mono text-xs space-y-1">
-                <div className={getSessionColor()}>IP: 192.168.1.100</div>
-                <div className={getSessionColor()}>Browser: Chrome 120</div>
-                <div className={getSessionColor()}>OS: {navigator.platform}</div>
-                <div className={getSessionColor()}>Status: {sessionState}</div>
-              </div>
-            </div>
-          </div>
-
-          {sessionState === 'hijacked' && (
-            <div className="mt-4 p-4 bg-red-900/30 border border-red-700/50 rounded-lg">
-              <div className="flex items-start space-x-3">
-                <AlertTriangle className="w-5 h-5 text-red-400 mt-0.5" />
-                <div>
-                  <div className="text-red-400 font-medium">Session Hijacked!</div>
-                  <div className="text-red-300 text-sm mt-1">
-                    An attacker now has access to this user session and can perform actions as the logged-in user.
-                  </div>
-                  <div className="text-red-300 text-xs mt-2">
-                    Possible actions: View private data, make transactions, change account settings, access admin panels
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
 
       {/* Prevention Strategies */}
       <div className="bg-blue-900/30 border border-blue-700/50 rounded-lg p-6">
