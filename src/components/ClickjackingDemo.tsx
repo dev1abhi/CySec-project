@@ -137,7 +137,7 @@ const ClickjackingDemo: React.FC = () => {
 
               {/* Fake Prize Button */}
               <div className="relative">
-                <button className="w-full bg-yellow-500 text-black py-4 px-6 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors">
+                <button onClick={() => !showOverlay && alert("Here is a prize💵💵💰💰💸💸🤑🤑")} className="w-full bg-yellow-500 text-black py-4 px-6 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors">
                   🎁 CLAIM YOUR $1000 PRIZE! 🎁
                 </button>
 
